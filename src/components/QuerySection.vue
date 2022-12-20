@@ -23,4 +23,32 @@ export default {
   },
 };
 </script>
-<style scoped></style>
+<style scoped>
+.querys {
+  --gap: 60px;
+  --columns: 3;
+  margin-top: 80px;
+  display: grid;
+  grid-template-columns: repeat(var(--columns), 220px);
+  border-bottom: 1px solid #f6f6f6;
+  padding-bottom: 20px;
+  gap: var(--gap);
+}
+@media screen and (max-width: 820px) {
+  .querys {
+    --gap: 30px;
+  }
+}
+@media screen and (max-width: 720px) {
+  .querys {
+    --gap: 30px;
+    --columns: 2;
+  }
+}
+@media screen and (max-width: 460px) {
+  .querys {
+    --gap: 20px;
+    --columns: 1;
+  }
+}
+</style>

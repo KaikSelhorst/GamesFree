@@ -1,10 +1,13 @@
 <template>
   <div class="query-item">
     <button @click="openMenu">
-      {{ queryName | captalize }}: {{ activeQuery | captalize }}
+      <span class="title">{{ queryName | captalize }}:</span>
+      <span :class="['active-query', { active: isOpen }]">
+        {{ activeQuery | captalize }}</span
+      >
     </button>
 
-    <ul class="querys_list" v-if="isOpen">
+    <ul class="querys-list" v-if="isOpen">
       <li v-for="(query, key) in querys" :key="key" @click="onClick(query)">
         {{ query }}
       </li>
@@ -40,8 +43,10 @@ export default {
     },
     onClick(query) {
       let route = { ...this.q };
-      route[this.queryName] = query.toLowerCase();
-      if (!(this.$route.query[this.queryName] === query.toLowerCase())) {
+      this.activeQuery = query;
+      const newQuery = query.toLowerCase().replace("_", "-");
+      route[this.queryName] = newQuery;
+      if (!(this.$route.query[this.queryName] === newQuery)) {
         this.$router.push({ query: route });
       }
     },
@@ -52,4 +57,57 @@ export default {
 };
 </script>
 
-<style scoped></style>
+<style scoped>
+.query-item {
+  padding: 8px;
+  position: relative;
+}
+
+button {
+  background: none;
+  font-size: 1rem;
+  gap: 4px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  border: none;
+}
+
+.active-query::after {
+  margin-left: 8px;
+  content: "";
+  background: url("../assets/arrow.svg") center bottom no-repeat;
+  background-size: 12px;
+  position: relative;
+  display: inline-block;
+  color: red;
+  height: 12px;
+  transition: all 0.4s;
+  width: 12px;
+}
+.active-query.active::after {
+  transform: rotate(180deg);
+}
+
+.querys-list {
+  margin-top: 8px;
+  max-width: 180px;
+  width: 100%;
+  position: absolute;
+  padding: 4px 0;
+  background: #f9f9f9;
+  border-radius: 2px;
+  z-index: 100;
+  max-height: 300px;
+  overflow: auto;
+  display: grid;
+}
+.querys-list li {
+  display: block;
+  padding: 8px 12px;
+  cursor: pointer;
+}
+.querys-list li:hover {
+  background: #ffff;
+}
+</style>
