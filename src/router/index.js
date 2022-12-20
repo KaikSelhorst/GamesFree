@@ -10,6 +10,13 @@ const routes = [
     name: "home",
     component: HomeView,
   },
+  {
+    path: "/game/:id",
+    name: "game",
+    props: true,
+    component: () =>
+      import(/* webpackChunkName: "group-user" */ "../views/GameView.vue"),
+  },
 ];
 
 const router = new VueRouter({
