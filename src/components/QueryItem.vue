@@ -44,9 +44,9 @@ export default {
     onClick(query) {
       let route = { ...this.q };
       this.activeQuery = query;
-      const newQuery = query.toLowerCase().replace("_", "-");
-      route[this.queryName] = newQuery;
-      if (!(this.$route.query[this.queryName] === newQuery)) {
+      const fQueryName = this.queryName.replace("_", "-");
+      route[fQueryName] = query;
+      if (!(this.$route.query[fQueryName] === query)) {
         this.$router.push({ query: route });
       }
     },
