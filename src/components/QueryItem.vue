@@ -45,13 +45,10 @@ export default {
       let route = { ...this.q };
       this.activeQuery = query;
       const fQueryName = this.queryName.replace("_", "-");
-      route[fQueryName] = query;
-      if (!(this.$route.query[fQueryName] === query)) {
+      route[fQueryName] = query.toLowerCase();
+      if (!(this.$route.query[fQueryName] === query.toLowerCase())) {
         this.$router.push({ query: route });
       }
-    },
-    createQueryRoute(query) {
-      return { query: { [this.queryName]: query.toLowerCase() } };
     },
   },
 };
