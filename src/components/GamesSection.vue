@@ -19,4 +19,16 @@ export default {
 };
 </script>
 
-<style scoped></style>
+<style scoped>
+.games-section {
+  margin-top: 40px;
+}
+ul {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+li {
+  margin-bottom: 24px;
+}
+</style>
