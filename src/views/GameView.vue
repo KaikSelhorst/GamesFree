@@ -1,13 +1,56 @@
 <template>
-  <section class="game">{{ game }}</section>
+  <section class="game container" v-if="game">
+    <GameCard
+      :game="{ thumbnail: game.thumbnail, url: game.game_url }"
+      class="card-game"
+    />
+    <div class="game-about">
+      <h1>{{ game.title }}</h1>
+      <p>{{ game.description }}</p>
+
+      <div class="game-informations game_title">
+        <h2>Additional Information</h2>
+        <GameInformations
+          :informations="
+            makeGameInformations(
+              null,
+              'title',
+              'developer',
+              'publisher',
+              'release_date',
+              'genre',
+              'platform'
+            )
+          "
+          :columns="3"
+        />
+      </div>
+      <GameScreenshots :screenshots="game.screenshots" />
+      <div class="game-informations game_title">
+        <h2>Minimum System Requirements <span class="dark">(Windows)</span></h2>
+        <GameInformations
+          :informations="game.minimum_system_requirements"
+          :columns="2"
+        />
+      </div>
+    </div>
+  </section>
 </template>
 
 <script>
 import { api } from "@/services.js";
+import GameCard from "@/components/GameCard.vue";
+import GameInformations from "@/components/GameInformations.vue";
+import GameScreenshots from "@/components/GameScreenshots.vue";
 
 export default {
   name: "GameView",
   props: ["id"],
+  components: {
+    GameCard,
+    GameInformations,
+    GameScreenshots,
+  },
   data() {
     return {
       game: null,
@@ -17,6 +60,17 @@ export default {
     async setGame() {
       this.game = await api.getGame(this.id);
     },
+    makeGameInformations(base, ...args) {
+      const Informations = {};
+
+      if (args.length) {
+        args.forEach((arg) => {
+          if (!base) Informations[arg] = this.game[arg];
+          else Informations[arg] = this.game[base][arg];
+        });
+      }
+      return Informations;
+    },
   },
   created() {
     this.setGame();
@@ -24,4 +78,48 @@ export default {
 };
 </script>
 
-<style></style>
+<style scoped>
+.game {
+  --color1: red;
+  display: grid;
+  justify-items: start;
+  align-items: flex-start;
+  min-height: 100vh;
+  margin: 40px auto;
+  gap: 32px;
+  grid-template-columns: minmax(min-content, 350px) 1fr;
+}
+.card-game {
+  position: sticky;
+  top: 24px;
+}
+@media screen and (max-width: 800px) {
+  .game {
+    grid-template-columns: minmax(min-content, 300px) 1fr;
+  }
+}
+@media screen and (max-width: 680px) {
+  .game {
+    grid-template-columns: 1fr;
+    justify-items: center;
+  }
+  .card-game {
+    position: initial;
+  }
+}
+h1 {
+  margin-bottom: 12px;
+}
+
+p {
+  font-size: 1rem;
+  line-height: 1.5rem;
+}
+.game_title {
+  margin-top: 40px;
+}
+.dark {
+  opacity: 80%;
+  font-size: 1.125rem;
+}
+</style>

@@ -33,6 +33,7 @@ img {
 
 .container {
   max-width: 1160px;
+  padding: 0px 12px;
   margin: 0 auto;
 }
 .title {
