@@ -1,7 +1,9 @@
 <template>
   <div class="home container">
     <QuerySection />
-    <GamesSection :games="games" />
+    <transition mode="out-in">
+      <GamesSection :games="games" v-if="games" />
+    </transition>
   </div>
 </template>
 
@@ -20,6 +22,7 @@ export default {
   },
   methods: {
     async setGames() {
+      this.games = null;
       const url = this.$route.fullPath;
       this.games = await api.get(url);
     },

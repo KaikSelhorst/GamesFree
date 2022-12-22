@@ -47,6 +47,7 @@ ul {
   margin: 24px 0;
   gap: 12px;
   display: flex;
+  overflow-x: auto;
 }
 li {
   cursor: pointer;

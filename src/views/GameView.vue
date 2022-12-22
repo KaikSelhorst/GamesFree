@@ -1,41 +1,48 @@
 <template>
-  <section class="game container" v-if="game">
-    <GameCard
-      :game="{ thumbnail: game.thumbnail, url: game.game_url }"
-      class="card-game"
-    />
-    <div class="game-about">
-      <h1>{{ game.title }}</h1>
-      <p ref="gameDescription">{{ game.description }}</p>
-      <button class="expanded-text" @click="expandedText">Read More</button>
+  <transition name="game">
+    <section class="game container" v-if="game">
+      <GameCard
+        :game="{ thumbnail: game.thumbnail, url: game.game_url }"
+        class="card-game"
+      />
+      <div class="game-about">
+        <h1>{{ game.title }}</h1>
+        <p ref="gameDescription">{{ game.description }}</p>
+        <button class="expanded-text" @click="expandedText">Read More</button>
 
-      <div class="game-informations game_title">
-        <h2>Additional Information</h2>
-        <GameInformations
-          :informations="
-            makeGameInformations(
-              null,
-              'title',
-              'developer',
-              'publisher',
-              'release_date',
-              'genre',
-              'platform'
-            )
-          "
-          :columns="3"
-        />
+        <div class="game-informations game_title">
+          <h2>Additional Information</h2>
+          <GameInformations
+            :informations="
+              makeGameInformations(
+                null,
+                'title',
+                'developer',
+                'publisher',
+                'release_date',
+                'genre',
+                'platform'
+              )
+            "
+            :columns="3"
+          />
+        </div>
+        <GameScreenshots :screenshots="game.screenshots" />
+        <div
+          class="game-informations game_title"
+          v-if="game.minimum_system_requirements"
+        >
+          <h2>
+            Minimum System Requirements <span class="dark">(Windows)</span>
+          </h2>
+          <GameInformations
+            :informations="game.minimum_system_requirements"
+            :columns="2"
+          />
+        </div>
       </div>
-      <GameScreenshots :screenshots="game.screenshots" />
-      <div class="game-informations game_title">
-        <h2>Minimum System Requirements <span class="dark">(Windows)</span></h2>
-        <GameInformations
-          :informations="game.minimum_system_requirements"
-          :columns="2"
-        />
-      </div>
-    </div>
-  </section>
+    </section>
+  </transition>
 </template>
 
 <script>
@@ -167,5 +174,14 @@ p.expanded + .expanded-text::after {
 .dark {
   opacity: 80%;
   font-size: 1.125rem;
+}
+
+/* Game Section Animation */
+.game-enter {
+  opacity: 0;
+  transform: translate3d(-30px, 0, 0);
+}
+.game-enter-active {
+  transition: all 0.3s;
 }
 </style>
