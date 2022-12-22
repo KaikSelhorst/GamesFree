@@ -1,10 +1,8 @@
 <template>
-  <div class="container">
-    <header class="header">
-      <router-link to="/" class="logo title">Games Free</router-link>
-      <router-link to="/credits">Credits</router-link>
-    </header>
-  </div>
+  <header class="header">
+    <router-link to="/" class="logo title">Games Free</router-link>
+    <router-link to="/credits">Credits</router-link>
+  </header>
 </template>
 
 <script>

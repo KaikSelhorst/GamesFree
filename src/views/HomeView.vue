@@ -1,5 +1,5 @@
 <template>
-  <div class="home container">
+  <div class="home">
     <QuerySection />
     <transition mode="out-in">
       <GamesSection :games="games" v-if="games" />

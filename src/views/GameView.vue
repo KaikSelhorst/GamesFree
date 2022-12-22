@@ -1,6 +1,6 @@
 <template>
   <transition name="game">
-    <section class="game container" v-if="game">
+    <section class="game" v-if="game">
       <GameCard
         :game="{ thumbnail: game.thumbnail, url: game.game_url }"
         class="card-game"
