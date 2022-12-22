@@ -6,7 +6,8 @@
     />
     <div class="game-about">
       <h1>{{ game.title }}</h1>
-      <p>{{ game.description }}</p>
+      <p ref="gameDescription">{{ game.description }}</p>
+      <button class="expanded-text" @click="expandedText">Read More</button>
 
       <div class="game-informations game_title">
         <h2>Additional Information</h2>
@@ -71,6 +72,9 @@ export default {
       }
       return Informations;
     },
+    expandedText() {
+      this.$refs.gameDescription.classList.toggle("expanded");
+    },
   },
   created() {
     this.setGame();
@@ -113,7 +117,48 @@ h1 {
 
 p {
   font-size: 1rem;
+  text-align: justify;
   line-height: 1.5rem;
+  max-height: 16.5ch;
+  transition: all 1s;
+  overflow: hidden;
+}
+p.expanded {
+  max-height: 250ch;
+}
+.expanded-text {
+  color: #273849;
+  display: flex;
+  align-items: center;
+  border: none;
+  margin-top: 24px;
+  background: none;
+  cursor: pointer;
+  padding: 8px;
+  font-size: 0.875rem;
+  gap: 4px;
+  font-weight: 700;
+  border-radius: 2px;
+  position: relative;
+}
+
+.expanded-text::after,
+.expanded-text::before {
+  content: "";
+  height: 2px;
+  transition: all 0.3s;
+  width: 8px;
+  background: #273849;
+  display: inline-block;
+}
+.expanded-text::after {
+  position: absolute;
+  transition: all 0.3s;
+  transform: rotate(90deg);
+  left: 8px;
+}
+p.expanded + .expanded-text::after {
+  transform: rotate(0deg);
 }
 .game_title {
   margin-top: 40px;
