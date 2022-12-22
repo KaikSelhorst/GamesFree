@@ -1,48 +1,51 @@
 <template>
-  <transition name="game">
-    <section class="game" v-if="game">
-      <GameCard
-        :game="{ thumbnail: game.thumbnail, url: game.game_url }"
-        class="card-game"
-      />
-      <div class="game-about">
-        <h1>{{ game.title }}</h1>
-        <p ref="gameDescription">{{ game.description }}</p>
-        <button class="expanded-text" @click="expandedText">Read More</button>
+  <section>
+    <transition name="game" mode="out-in">
+      <div class="game" v-if="game">
+        <GameCard
+          :game="{ thumbnail: game.thumbnail, url: game.game_url }"
+          class="card-game"
+        />
+        <div class="game-about">
+          <h1>{{ game.title }}</h1>
+          <p ref="gameDescription">{{ game.description }}</p>
+          <button class="expanded-text" @click="expandedText">Read More</button>
 
-        <div class="game-informations game_title">
-          <h2>Additional Information</h2>
-          <GameInformations
-            :informations="
-              makeGameInformations(
-                null,
-                'title',
-                'developer',
-                'publisher',
-                'release_date',
-                'genre',
-                'platform'
-              )
-            "
-            :columns="3"
-          />
-        </div>
-        <GameScreenshots :screenshots="game.screenshots" />
-        <div
-          class="game-informations game_title"
-          v-if="game.minimum_system_requirements"
-        >
-          <h2>
-            Minimum System Requirements <span class="dark">(Windows)</span>
-          </h2>
-          <GameInformations
-            :informations="game.minimum_system_requirements"
-            :columns="2"
-          />
+          <div class="game-informations game_title">
+            <h2>Additional Information</h2>
+            <GameInformations
+              :informations="
+                makeGameInformations(
+                  null,
+                  'title',
+                  'developer',
+                  'publisher',
+                  'release_date',
+                  'genre',
+                  'platform'
+                )
+              "
+              :columns="3"
+            />
+          </div>
+          <GameScreenshots :screenshots="game.screenshots" />
+          <div
+            class="game-informations game_title"
+            v-if="game.minimum_system_requirements"
+          >
+            <h2>
+              Minimum System Requirements <span class="dark">(Windows)</span>
+            </h2>
+            <GameInformations
+              :informations="game.minimum_system_requirements"
+              :columns="2"
+            />
+          </div>
         </div>
       </div>
-    </section>
-  </transition>
+      <TheLoading v-else />
+    </transition>
+  </section>
 </template>
 
 <script>

@@ -3,6 +3,7 @@
     <QuerySection />
     <transition mode="out-in">
       <GamesSection :games="games" v-if="games" />
+      <TheLoading v-else />
     </transition>
   </div>
 </template>
@@ -37,5 +38,3 @@ export default {
   },
 };
 </script>
-
-<style scoped></style>

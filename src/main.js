@@ -1,6 +1,7 @@
 import Vue from "vue";
 import App from "./App.vue";
 import router from "./router";
+import TheLoading from "./components/TheLoading.vue";
 
 Vue.config.productionTip = false;
 
@@ -11,6 +12,8 @@ Vue.filter("captalize", (string) => {
   const ArrayCaptalize = ArrayString.map(captalize);
   return ArrayCaptalize.join(" ");
 });
+
+Vue.component("TheLoading", TheLoading);
 
 new Vue({
   router,
