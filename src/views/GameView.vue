@@ -120,11 +120,12 @@ p {
   text-align: justify;
   line-height: 1.5rem;
   max-height: 16.5ch;
-  transition: all 1s;
+  transition: all 0.3s;
   overflow: hidden;
 }
 p.expanded {
   max-height: 250ch;
+  transition: 1s;
 }
 .expanded-text {
   color: #273849;
