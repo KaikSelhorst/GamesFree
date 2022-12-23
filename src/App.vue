@@ -67,4 +67,12 @@ img {
 .v-leave-active {
   transition: 0.3s all;
 }
+/* Variant Animation */
+.v2-enter {
+  opacity: 0;
+  transform: translate3d(-30px, 0, 0);
+}
+.v2-enter-active {
+  transition: all 0.3s;
+}
 </style>

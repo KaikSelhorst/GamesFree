@@ -1,6 +1,6 @@
 <template>
   <section>
-    <transition name="game" mode="out-in">
+    <transition name="v2" mode="out-in">
       <div class="game" v-if="game">
         <GameCard
           :game="{ thumbnail: game.thumbnail, url: game.game_url }"
@@ -177,14 +177,5 @@ p.expanded + .expanded-text::after {
 .dark {
   opacity: 80%;
   font-size: 1.125rem;
-}
-
-/* Game Section Animation */
-.game-enter {
-  opacity: 0;
-  transform: translate3d(-30px, 0, 0);
-}
-.game-enter-active {
-  transition: all 0.3s;
 }
 </style>

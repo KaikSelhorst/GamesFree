@@ -1,7 +1,7 @@
 <template>
   <header class="header">
-    <router-link to="/" class="logo title">Games Free</router-link>
-    <router-link to="/credits">Credits</router-link>
+    <router-link :to="{ name: 'home' }" class="logo">Games Free</router-link>
+    <router-link :to="{ name: 'credits' }">Credits</router-link>
   </header>
 </template>
 
@@ -17,6 +17,9 @@ export default {
   display: flex;
   align-items: center;
   justify-content: space-between;
+}
+.header > a {
+  color: #273849;
 }
 .logo {
   font-weight: 500;

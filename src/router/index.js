@@ -1,6 +1,7 @@
 import Vue from "vue";
 import VueRouter from "vue-router";
 import HomeView from "../views/HomeView.vue";
+import CreditsView from "../views/CreditsView.vue";
 
 Vue.use(VueRouter);
 
@@ -16,6 +17,11 @@ const routes = [
     props: true,
     component: () =>
       import(/* webpackChunkName: "group-user" */ "../views/GameView.vue"),
+  },
+  {
+    path: "/credits",
+    name: "credits",
+    component: CreditsView,
   },
 ];
 
