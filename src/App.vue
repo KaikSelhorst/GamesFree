@@ -11,6 +11,7 @@
 <script>
 import TheHeader from "./components/TheHeader.vue";
 import TheFooter from "./components/TheFooter.vue";
+import "@/assets/css/global.css";
 export default {
   name: "App",
   components: {
@@ -21,6 +22,9 @@ export default {
 </script>
 
 <style>
+body {
+  background: var(--c7-back);
+}
 #app {
   min-height: 100vh;
   display: flex;
@@ -36,7 +40,7 @@ export default {
   list-style: none;
   padding: 0;
   margin: 0;
-  color: #304455;
+  color: var(--c1);
 }
 
 img {
@@ -50,7 +54,7 @@ img {
   margin: 0 auto;
 }
 .title {
-  color: #273849;
+  color: var(--c0);
 }
 
 .v-enter,

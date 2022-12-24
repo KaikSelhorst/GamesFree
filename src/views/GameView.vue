@@ -34,7 +34,8 @@
             v-if="game.minimum_system_requirements"
           >
             <h2>
-              Minimum System Requirements <span class="dark">(Windows)</span>
+              Minimum System Requirements
+              <span class="dark">({{ game.platform }})</span>
             </h2>
             <GameInformations
               :informations="game.minimum_system_requirements"
@@ -82,8 +83,12 @@ export default {
       }
       return Informations;
     },
-    expandedText() {
+    expandedText({ currentTarget }) {
       this.$refs.gameDescription.classList.toggle("expanded");
+      const contain = this.$refs.gameDescription.classList.contains("expanded");
+
+      if (contain) currentTarget.innerHTML = "Read Less";
+      else currentTarget.innerHTML = "Read More";
     },
   },
   created() {
@@ -138,7 +143,7 @@ p.expanded {
   transition: 1s;
 }
 .expanded-text {
-  color: #273849;
+  color: var(--c0);
   display: flex;
   align-items: center;
   border: none;
@@ -159,7 +164,7 @@ p.expanded {
   height: 2px;
   transition: all 0.3s;
   width: 8px;
-  background: #273849;
+  background: var(--c0);
   display: inline-block;
 }
 .expanded-text::after {

@@ -57,7 +57,7 @@ li {
 
 .modal-screenshot {
   z-index: 100;
-  background: rgba(0, 0, 0, 0.8);
+  background: var(--c6);
   inset: 0;
   height: 100vh;
   position: fixed;
@@ -75,8 +75,8 @@ li {
   align-items: center;
   justify-content: center;
   padding: 8px;
-  background: #f9f9f9;
-  color: #273849;
+  background: var(--c3-back);
+  color: var(--c0);
   font-weight: 600;
   font-size: 1.125rem;
   width: 40px;

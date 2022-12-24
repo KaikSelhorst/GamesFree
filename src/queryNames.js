@@ -45,6 +45,6 @@ export const category = {
 };
 
 export const sort_by = {
-  title: "sort_by",
+  title: "sort-by",
   querys: ["Relevance", "Popularity", "Release-date", "Alphabetical"],
 };

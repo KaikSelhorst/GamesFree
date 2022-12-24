@@ -49,7 +49,7 @@ export default {
 h1 {
   margin-bottom: 24px;
   font-size: 2rem;
-  color: #273849;
+  color: var(--c0);
 }
 h2 {
   font-size: 1.255rem;
@@ -62,7 +62,7 @@ p {
 }
 p > a {
   font-weight: 500;
-  color: #304455;
+  color: var(--c1);
   text-decoration: underline;
 }
 .btn {
@@ -71,11 +71,11 @@ p > a {
   margin: 40px 8px 4px 0px;
   border-radius: 2px;
   font-size: 1rem;
-  background: #273849;
+  background: var(--c0);
   transition: 0.3s;
-  color: rgba(255, 255, 255, 0.85);
+  color: var(--c4);
 }
 .btn:hover {
-  color: #fff;
+  color: var(--c7);
 }
 </style>
