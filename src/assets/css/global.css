@@ -28,11 +28,11 @@
     --c7-back: #181a1b;
     --c7: #e8e6e3;
   }
-  :-webkit-scrollbar {
+  ::-webkit-scrollbar {
     background-color: #202324;
     color: #aba499;
   }
-  ::-webkit-scrollbar-corner {
+  :-webkit-scrollbar-corner {
     background-color: #181a1b;
   }
   ::-webkit-scrollbar-thumb {
