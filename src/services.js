@@ -1,10 +1,14 @@
 import axios from "axios";
 
 const axiosInstance = axios.create({
-  baseURL: "https://www.freetogame.com/api/games",
-  headers: {
-    "Access-Control-Allow-Origin": "*",
-  },
+  baseURL:
+    "https://cors-anywhere.herokuapp.com/https://www.freetogame.com/api/games",
+  Origin: "https://www.freetogame.com/api/games",
+});
+const axiosInstanceGame = axios.create({
+  baseURL:
+    "https://cors-anywhere.herokuapp.com/https://www.freetogame.com/api/game",
+  Origin: "https://www.freetogame.com/api/game",
 });
 
 export const api = {
@@ -13,9 +17,7 @@ export const api = {
     return data;
   },
   async getGame(game) {
-    const { data } = await axios.get(
-      `https://www.freetogame.com/api/game?id=${game}`
-    );
+    const { data } = await axiosInstanceGame.get("?id=" + game);
     return data;
   },
 };
