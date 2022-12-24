@@ -2,6 +2,9 @@ import axios from "axios";
 
 const axiosInstance = axios.create({
   baseURL: "https://www.freetogame.com/api/games",
+  headers: {
+    "Access-Control-Allow-Origin": "*",
+  },
 });
 
 export const api = {
