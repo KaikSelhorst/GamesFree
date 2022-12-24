@@ -33,13 +33,13 @@
     color: #aba499;
   }
   ::-webkit-scrollbar-corner {
-    background-color: var(--c7-back);
+    background-color: #181a1b;
   }
   ::-webkit-scrollbar-thumb {
-    background-color: var(--c5);
+    background-color: #4f5959;
   }
   ::selection {
-    background-color: #004daa !important;
-    color: var(--c7) !important;
+    background-color: #004daa;
+    color: #e8e6e3;
   }
 }
