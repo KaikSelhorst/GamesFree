@@ -30,7 +30,7 @@ export default {
   margin-top: 80px;
   display: grid;
   grid-template-columns: repeat(var(--columns), 220px);
-  border-bottom: 1px solid #f6f6f6;
+  border-bottom: 1px solid var(--c2-border);
   padding-bottom: 20px;
   gap: var(--gap);
 }

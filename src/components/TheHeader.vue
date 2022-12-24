@@ -19,7 +19,7 @@ export default {
   justify-content: space-between;
 }
 .header > a {
-  color: #273849;
+  color: var(--c0);
 }
 .logo {
   font-weight: 500;

@@ -44,7 +44,7 @@ export default {
     onClick(query) {
       let route = { ...this.q };
       this.activeQuery = query;
-      const fQueryName = this.queryName.replace("_", "-");
+      const fQueryName = this.queryName;
       route[fQueryName] = query.toLowerCase();
       if (!(this.$route.query[fQueryName] === query.toLowerCase())) {
         this.$router.push({ query: route });
@@ -73,17 +73,19 @@ button {
 .active-query::after {
   margin-left: 8px;
   content: "";
-  background: url("../assets/arrow.svg") center bottom no-repeat;
+  background: url("../assets/arrow.svg") center top no-repeat;
   background-size: 12px;
   position: relative;
   display: inline-block;
   color: red;
+  transform: rotate(180deg);
+  top: 1px;
   height: 12px;
   transition: all 0.4s;
   width: 12px;
 }
 .active-query.active::after {
-  transform: rotate(180deg);
+  transform: rotate(0);
 }
 
 .querys-list {
@@ -92,7 +94,7 @@ button {
   width: 100%;
   position: absolute;
   padding: 4px 0;
-  background: #f9f9f9;
+  background: var(--c3-back);
   border-radius: 2px;
   z-index: 100;
   max-height: 300px;
@@ -105,6 +107,6 @@ button {
   cursor: pointer;
 }
 .querys-list li:hover {
-  background: #ffff;
+  background: var(--c7-back);
 }
 </style>

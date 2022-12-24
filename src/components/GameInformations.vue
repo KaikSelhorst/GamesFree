@@ -38,6 +38,6 @@ span {
   display: block;
   font-weight: 500;
   font-size: 1.025rem;
-  color: #273849;
+  color: var(--c0);
 }
 </style>

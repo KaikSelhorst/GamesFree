@@ -77,10 +77,10 @@ export default {
   border-radius: 50%;
 }
 g path {
-  fill: #f9f9f9;
+  fill: var(--c3);
   transition: 0.3s all;
 }
 g.active path {
-  fill: #273849;
+  fill: var(--c0);
 }
 </style>

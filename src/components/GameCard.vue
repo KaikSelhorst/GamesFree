@@ -32,14 +32,14 @@ export default {
 span {
   width: max-content;
   font-weight: 500;
-  color: #4f5959;
-  background: #f6f6f6;
+  color: var(--c5);
+  background: var(--c2);
 }
 a {
   flex: 1;
   font-weight: 600;
-  color: rgba(255, 255, 255, 0.85);
-  background: #304455;
+  color: var(--c4);
+  background: var(--c1-back);
   gap: 8px;
 }
 a::after {

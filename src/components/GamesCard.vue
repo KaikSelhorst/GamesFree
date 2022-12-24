@@ -43,8 +43,8 @@ h2 {
 }
 span {
   margin: 4px 0;
-  color: rgba(255, 255, 255, 0.85);
-  background: #304455;
+  color: var(--c4);
+  background: var(--c1-back);
   display: inline-block;
   padding: 4px 8px;
   font-size: 0.825rem;
@@ -52,7 +52,7 @@ span {
   border-radius: 2px;
 }
 .card_text {
-  background: #f9f9f9;
+  background: var(--c3-back);
   padding: 12px;
 }
 </style>
