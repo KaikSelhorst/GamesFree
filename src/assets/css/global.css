@@ -28,4 +28,18 @@
     --c7-back: #181a1b;
     --c7: #e8e6e3;
   }
+  :-webkit-scrollbar {
+    background-color: #202324;
+    color: #aba499;
+  }
+  ::-webkit-scrollbar-corner {
+    background-color: var(--c7-back);
+  }
+  ::-webkit-scrollbar-thumb {
+    background-color: var(--c5);
+  }
+  ::selection {
+    background-color: #004daa !important;
+    color: var(--c7) !important;
+  }
 }
