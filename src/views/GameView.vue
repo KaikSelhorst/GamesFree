@@ -70,6 +70,7 @@ export default {
   },
   methods: {
     async setGame() {
+      this.game = null;
       this.game = await api.getGame(this.id);
     },
     makeGameInformations(base, ...args) {
@@ -93,6 +94,11 @@ export default {
   },
   created() {
     this.setGame();
+  },
+  watch: {
+    id() {
+      this.setGame();
+    },
   },
 };
 </script>

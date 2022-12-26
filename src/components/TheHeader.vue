@@ -1,13 +1,18 @@
 <template>
   <header class="header">
     <router-link :to="{ name: 'home' }" class="logo">Games Free</router-link>
+    <TheSearch />
     <router-link :to="{ name: 'credits' }">Credits</router-link>
   </header>
 </template>
 
 <script>
+import TheSearch from "@/components/TheSearch.vue";
 export default {
   name: "TheHeader",
+  components: {
+    TheSearch,
+  },
 };
 </script>
 
