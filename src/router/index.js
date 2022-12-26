@@ -16,12 +16,23 @@ const routes = [
     name: "game",
     props: true,
     component: () =>
-      import(/* webpackChunkName: "group-user" */ "../views/GameView.vue"),
+      import(/* webpackChunkName: "group-game" */ "../views/GameView.vue"),
   },
   {
     path: "/credits",
     name: "credits",
     component: CreditsView,
+  },
+  {
+    path: "/search/:query",
+    name: "search",
+    props: true,
+    component: () =>
+      import(/* webpackChunkName: "group-search" */ "../views/SearchView.vue"),
+  },
+  {
+    path: "*",
+    redirect: { name: "home" },
   },
 ];
 
