@@ -71,7 +71,7 @@ p > a {
   margin: 40px 8px 4px 0px;
   border-radius: 2px;
   font-size: 1rem;
-  background: var(--c0);
+  background: var(--c0-back);
   transition: 0.3s;
   color: var(--c4);
 }
