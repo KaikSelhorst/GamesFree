@@ -12,9 +12,7 @@
     </form>
     <ul v-if="isOpen && filterData.length">
       <li v-for="search in filterData" :key="search.id">
-        <router-link :to="{ name: 'game', params: { id: search.id } }">
-          {{ search.title }}
-        </router-link>
+        <SearchItem :search="search" />
       </li>
     </ul>
   </section>
@@ -23,10 +21,15 @@
 <script>
 import { api } from "@/services.js";
 import { outSideClick } from "@/helpers.js";
+import SearchItem from "@/components/SearchItem.vue";
+
 export default {
   name: "TheSearch",
   data() {
     return { searchData: null, searchQuery: null, isOpen: false };
+  },
+  components: {
+    SearchItem,
   },
   methods: {
     async getData() {
@@ -95,15 +98,6 @@ ul {
   overflow-y: auto;
   z-index: 1000;
   transform: translate3d(-50%, 0, 0);
-}
-
-li a {
-  font-size: 1rem;
-  padding: 8px;
-  display: block;
-}
-li:hover {
-  background: var(--c7-back);
 }
 
 input {
