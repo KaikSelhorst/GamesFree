@@ -60,7 +60,7 @@ span {
 }
 .card_text {
   background: var(--c3-back);
-  padding: 16px;
+  padding: 16px 12px 12px 12px;
 }
 .platform-genre {
   display: flex;
