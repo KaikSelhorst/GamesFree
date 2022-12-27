@@ -7,16 +7,23 @@
       <div class="card_text">
         <h2>{{ game.title }}</h2>
         <p>{{ game.short_description }}</p>
-        <span class="genre">{{ game.genre }}</span>
+        <div class="platform-genre">
+          <span class="genre">{{ game.genre }}</span>
+          <GamesCardPlatform :platform="game.platform" />
+        </div>
       </div>
     </router-link>
   </div>
 </template>
 
 <script>
+import GamesCardPlatform from "@/components/GamesCardPlatform.vue";
 export default {
   name: "GamesCard",
   props: ["game"],
+  components: {
+    GamesCardPlatform,
+  },
 };
 </script>
 
@@ -53,6 +60,14 @@ span {
 }
 .card_text {
   background: var(--c3-back);
-  padding: 12px;
+  padding: 16px 12px 12px 12px;
+}
+.platform-genre {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.platform-genre img {
+  max-width: 18px;
 }
 </style>
