@@ -26,7 +26,7 @@ import SearchItem from "@/components/SearchItem.vue";
 export default {
   name: "TheSearch",
   data() {
-    return { searchData: null, searchQuery: null, isOpen: false };
+    return { searchData: null, searchQuery: "", isOpen: false };
   },
   components: {
     SearchItem,
@@ -50,7 +50,7 @@ export default {
           this.$router.push({
             name: "search",
             params: {
-              query: this.searchQuery,
+              query: this.searchQuery.toLowerCase(),
               results: this.filterData,
             },
           });
@@ -60,8 +60,9 @@ export default {
   },
   computed: {
     filterData() {
+      const newQuery = this.searchQuery.toLowerCase();
       const data = this.searchData.filter((search) =>
-        search.title.toLowerCase().includes(this.searchQuery) ? search : false
+        search.title.toLowerCase().includes(newQuery) ? search : false
       );
       return data;
     },
@@ -73,10 +74,6 @@ export default {
   },
   created() {
     this.getData();
-  },
-  beforeRouteUpdate(to, from, next) {
-    console.log(from.params.query === to.params.query);
-    console.log(next);
   },
 };
 </script>
