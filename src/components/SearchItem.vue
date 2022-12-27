@@ -1,6 +1,6 @@
 <template>
   <router-link :to="{ name: 'game', params: { id: search.id } }">
-    {{ search.title }}
+    <span>{{ search.title }}</span>
     <img :src="search.thumbnail" :alt="search.title" />
   </router-link>
 </template>
@@ -15,6 +15,7 @@ export default {
 <style scoped>
 a {
   font-size: 1rem;
+  line-height: 1.5rem;
   padding: 8px;
   display: flex;
   justify-content: space-between;
